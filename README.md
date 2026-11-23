@@ -56,23 +56,6 @@ src/
 5. Favorites are an array of Pokémon ids. `useLocalStorage` reads it on startup
    and writes it again whenever it changes.
 
-## Possible questions tomorrow
-
-- **What does `useEffect(..., [])` do?** Runs the code after the first render. The
-  dependency array decides when it runs again. Here it re-runs only when
-  `reloadKey` changes (the retry button).
-- **Why `AbortController`?** To cancel in-flight requests if the component goes
-  away, and to avoid state updates on something that no longer exists.
-- **Why `key={p.id}` in the list?** React uses it to tell list items apart when
-  the list changes.
-- **Why is `visible` not in state?** It can be computed from `pokemon`, `search`,
-  `typeFilter` and `favorites`. Storing it separately would risk going out of sync.
-- **Why `Promise.all`?** It runs the 151 requests in parallel and gives one result
-  when all finish (or one error if any fail).
-- **Why `setFavorites(current => ...)`?** The new value depends on the old one, so
-  we use the function form to always get the latest value.
-- **What is `JSON.stringify` for in localStorage?** localStorage only stores
-  strings, so arrays must be converted to JSON text and parsed back.
 
 ## Upload to GitHub
 
